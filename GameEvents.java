@@ -55,7 +55,6 @@ public class GameEvents extends Observable implements KeyListener{
      * @param event 
      */
     public void keyTyped(KeyEvent event){
-        
     }
    /**
     * Checks if Hash Set contains specified key. If it does, that key is being pressed. 

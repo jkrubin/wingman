@@ -38,7 +38,6 @@ public class WingmanExe extends GameExe {
         setBackground(Color.white);
         Image island1, island2, island3, enemyImg;
         isGameOver = false;
-        gameEvents = new GameEvents();
         allSprites = new CurrentSprites(this);
         try {
             sea = ImageIO.read(getClass().getResource("Resources/water.png"));
@@ -80,9 +79,9 @@ public class WingmanExe extends GameExe {
             if (users == 2) {
                 gameEvents.addObserver(n);
             }
-            addKeyListener(gameEvents);
+            //addKeyListener(gameEvents);
         } catch (Exception e) {
-            System.out.print("No resources are found");
+            System.out.print(e.getStackTrace());
         }
     }
 

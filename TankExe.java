@@ -60,9 +60,7 @@ public class TankExe extends GameExe {
         allSprites.addTank(t2);
         gameEvents.addObserver(t1);
         gameEvents.addObserver(t2);
-        
-        addKeyListener(gameEvents);
-
+       
         //Make Barriers
         for (int i = 0; i < GameExe.getw() / wall.getWidth(this); i++) {
             allSprites.addIsland(new WingmanIsland(wall, i * wall.getWidth(this), 0, 0, null, this));
@@ -145,12 +143,21 @@ public class TankExe extends GameExe {
         int x2=t2.getX();
         int y2=t2.getY();
         
-        g.setColor(Color.black);
-        g.fillRect(0, 0, w, h);
-        
-        g.drawImage(bimg,0,0,480,480,x1-240,y1-240,x1+240,y1+240,this);
-        g.drawImage(bimg,480,0,960,480,x2-240,y2-240,x2+240,y2+240,this);
-        g.drawImage(UI, 0, 448,960,704,0, 448,960,704, this);
-        g.drawImage(miniMap,330,450,630,704,0,0,w,h, this);
+        BufferedImage newImage = new BufferedImage(w,h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D finishG = newImage.createGraphics();
+        finishG.setColor(Color.black);
+        finishG.fillRect(0, 0, w, h);
+        //draw image
+        finishG.drawImage(bimg,0,0,480,480,x1-240,y1-240,x1+240,y1+240,this);
+        finishG.drawImage(bimg,480,0,960,480,x2-240,y2-240,x2+240,y2+240,this);
+        finishG.drawImage(UI, 0, 448,960,704,0, 448,960,704, this);
+        finishG.drawImage(miniMap,330,450,630,704,0,0,w,h, this);        
+        finishG.dispose();
+
+        g.drawImage(newImage, 0, 0, this);
+//        g.drawImage(bimg,0,0,480,480,x1-240,y1-240,x1+240,y1+240,this);
+//        g.drawImage(bimg,480,0,960,480,x2-240,y2-240,x2+240,y2+240,this);
+//        g.drawImage(UI, 0, 448,960,704,0, 448,960,704, this);
+//        g.drawImage(miniMap,330,450,630,704,0,0,w,h, this);
     }
 }

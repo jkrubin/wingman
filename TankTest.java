@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 
 public class TankTest {
         
-        public static void main(String argv[]) {
+    public static void main(String argv[]) {
+        GameEvents events = new GameEvents();   
         final TankExe demo = new TankExe(960,704);
         demo.init();
         JFrame f = new JFrame("Tank Game");
@@ -17,6 +18,8 @@ public class TankTest {
         f.setSize(new Dimension(960,726));
         f.setVisible(true);
         f.setResizable(false);
-        demo.start();
+        f.setFocusable(true);
+        f.addKeyListener(events);
+        demo.start(events);
     }
 }

@@ -21,8 +21,7 @@ public class GameExe extends JApplet implements Runnable {
     GameEvents gameEvents;
     CurrentSprites allSprites;
     static boolean isGameOver;
-    static int w,h;
-    
+    static int w,h;    
 
     public void init() {
     }
@@ -56,7 +55,8 @@ public class GameExe extends JApplet implements Runnable {
     /**
      * Starts the thread to run the game
      */
-    public void start() {
+    public void start(GameEvents events) {
+        gameEvents = events;
         thread = new Thread(this);
         thread.setPriority(Thread.MIN_PRIORITY);
         thread.start();
